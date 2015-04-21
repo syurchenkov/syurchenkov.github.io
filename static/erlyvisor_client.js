@@ -2,9 +2,7 @@
     var websocket;
 
     function start () {
-      websocket = new WebSocket("ws://" + window.location.host + "/websocket");
 
-      websocket.onmessage = function(event) { onMessage(event.data) };
 
       refreshAnalgoscore(100);
 
@@ -16,8 +14,7 @@
           'max': 120,
           'inputColor':"#00A",
           'fgColor':"#00A",
-          'bgColor': "#FFF",
-          'change' : function (v) { sendMessage("NormalHR|" + Math.round(v)) }
+          'bgColor': "#FFF"
         });
 
       $('#MAP').knob(
@@ -28,8 +25,7 @@
           'max': 150,
           'inputColor':"#00A",
           'fgColor':"#00A",
-          'bgColor': "#FFF",
-          'change' : function (v) { sendMessage("NormalMAP|" + Math.round(v)) }
+          'bgColor': "#FFF"
         });
 
       $('#EvapSev').knob(
@@ -38,75 +34,14 @@
           'height': '150',
           'fgColor':"#8AE",
           'min': 0,
-          'max': 100,
-          'change' : function (v) { sendMessage("EvapSev|" + Math.round(v)) }
+          'max': 100
         });
       
     }
 
-    function onMessage (message) {
-      var parts = message.split("|");
-      var medicalId = parts[0];
-      var medicalValue = parts[1];
+ 
 
-      switch (medicalId) 
-      {
-        case "99":
-          Analgoscore = parseInt(medicalValue);
-          refreshAnalgoscore(Analgoscore);
-          break;
-        case "98":
-          $("#HR").val(medicalValue).trigger('change');
-          break;
-        case "97":
-          $("#MAP").val(medicalValue).trigger('change');
-          break;
-        case "anestesia":
-        case "monitor":
-          var arr = medicalValue.split(",");
-          var days = arr[0];
-          var hours = arr[1];
-          var mins = arr[2];
-          var secs = arr[3];
-          $("#" + medicalId + "-value").text(days + " Д, " + hours + ":" + mins + ":" + secs);
-          break;
-        case "EvapSev":
-          $("#EvapSev").val(medicalValue).trigger('change');
-          break;
-        case "ConsSev":
-          RestCons = parseFloat($("#ConsSev").text());
-          Cons = parseFloat(medicalValue);
-          NewCons = Cons + RestCons;
-          $("#ConsSev").text(NewCons.toString());
-          break;
-        case "357": $("#BIS_L").text(medicalValue); break;
-        case "358": $("#BIS_R").text(medicalValue); break;
-        case "359": $("#SQI_L").text(medicalValue); break;
-        case "360": $("#SQI_R").text(medicalValue); break;
-        case "361": $("#SR_L").text(medicalValue); break;
-        case "362": $("#SR_R").text(medicalValue); break;
-        case "363": $("#SEF_L").text(medicalValue); break;
-        case "364": $("#SEF_R").text(medicalValue); break;
-        case "365": $("#EMG_L").text(medicalValue); break;
-        case "366": $("#EMG_R").text(medicalValue); break;
-        case "367": $("#TP_L").text(medicalValue); break;
-        case "368": $("#TP_R").text(medicalValue); break;
-        case "369": $("#BC_L").text(medicalValue); break;
-        case "370": $("#BC_R").text(medicalValue); break;
-        case "371": $("#sBIS_L").text(medicalValue); break;
-        case "372": $("#sBIS_R").text(medicalValue); break;
-        case "373": $("#SEMG_L").text(medicalValue); break;
-        case "374": $("#SEMG_R").text(medicalValue); break;
-        case "375": $("#ASYM").text(medicalValue); break;
-      
-        default:;
-      }
-    }
 
-    function sendMessage (message) {
-      if (websocket.readyState == websocket.OPEN)
-        websocket.send(message);
-    }
 
     function refreshAnalgoscore (analgoscore) {
       var analgoscoreElem = $('#anValue');
