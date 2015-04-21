@@ -1,0 +1,123 @@
+body {
+	background-color: rgb(0, 25, 65);
+}
+
+
+.indent {
+	padding-top: 20px;
+}
+
+.indent > .brick {
+	min-height: 300px;
+}
+
+.blue {
+	background-color: rgb(40, 120, 230);
+}
+
+.black {
+	background-color: #111;
+}
+
+
+.brick h3 {
+	color: white;
+	text-align: center;
+	margin: 0px;
+	padding-top: 10px;
+}
+
+.brick h4 {
+	color: white;
+	text-align: left;
+	margin-left: 10px; 
+}
+
+.brick .knob-wrapper {
+	padding: 10px;
+}
+
+.brick .board-wrapper {
+	position: relative;
+	min-height: 200px;
+}
+
+.brick .scoreboard {
+	position: absolute;
+	top: 30%;
+	height: 100px;
+	background-color: darkgrey; 
+	margin-left: 30%;
+	margin-right: 30%;
+	width: 40%;  
+}
+
+.brick .scoreboard .value {
+	font-size: 50px;
+	font-weight: bold;
+	padding-top: 18px;
+	text-align: center;
+	color: white;
+}
+
+.display {
+	background-color: #111;
+	min-height: 300px;
+}
+
+.display h3 {
+	color: #8AE;
+	text-align: center;
+}
+
+.display.disp h3 {
+	color: yellow;
+	font-size: 20px;
+	margin-top: 60px;
+}
+
+
+.brick .black-alarm {
+	background-color: #AAA;
+}
+
+.brick .yellow-alarm {
+	background-color: #FF0;
+}
+
+.brick .green-alarm {
+	background-color: #0F0;
+}
+
+.brick .red-alarm {
+	background-color: #F00;
+}
+
+.disp h3 {
+	position: relative;
+	font-size: 18px;
+	color: rgb(255, 255, 0);
+}
+
+.operation-time {
+	background-color: #111; 
+	min-height: 300px;
+}
+
+.operation-time h4 {
+	color: #8AE;
+}
+
+.operation-time h3 {
+	color: #FF0;
+}
+
+.bis-table
+{
+
+}
+
+.bis-table caption {
+	text-align: center;
+	font-size: 20px;
+}
