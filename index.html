@@ -1,6 +1,9 @@
 <html>
 <script defer>
-  document.getElementById("counter").innerHTML = new Date.(2016, 08, 22) - Date.now
+setInterval(function() {
+  document.getElementById("counter").innerHTML = new Date(2016, 08, 22) - Date.now
+}, 1000);
+  
 </script>  
 </html>
 <body>
