@@ -1,7 +1,12 @@
 <html>
 <script defer>
 setInterval(function() {
-  document.getElementById("counter").innerHTML = new Date(2016, 08, 22) - new Date()
+  var time = (new Date(2016, 08, 22) - new Date()) / 1000;
+  var seconds = time % 60;
+  var minutes = time / 60 % 60;
+  var hours = time / 60 / 60 % 24;
+  var days = time / 60 / 60 / 24;
+  document.getElementById("counter").innerHTML = days + " дней, " + hours + " часов," + minutes + " минут," + seconds + " секунд" 
 }, 1000);
   
 </script>  
