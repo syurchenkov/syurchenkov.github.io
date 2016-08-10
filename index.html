@@ -2,10 +2,19 @@
 <script defer>
 setInterval(function() {
   var time = Math.round((new Date(2016, 08, 22) - new Date()) / 1000);
-  var seconds = time % 60;
-  var minutes = time / 60 % 60;
-  var hours = time / 60 / 60 % 24;
-  var days = time / 60 / 60 / 24;
+  var days = Math.floor(time / 86400);
+  time -= days * 86400;
+
+  // calculate (and subtract) whole hours
+  var hours = Math.floor(time / 3600) % 24;
+  time -= hours * 3600;
+
+// calculate (and subtract) whole minutes
+  var minutes = Math.floor(time / 60) % 60;
+  time -= minutes * 60;
+
+// what's left is seconds
+  var seconds = time % 60;  // in theory the modulus is not required
   document.getElementById("counter").innerHTML = days + " дней, " + hours + " часов," + minutes + " минут," + seconds + " секунд" 
 }, 1000);
   
